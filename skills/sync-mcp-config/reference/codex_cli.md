@@ -70,6 +70,16 @@ To enable the Rust-based MCP client implementation, add the following to your co
 rmcp_client = true
 ```
 
+## Project-Level Configuration
+
+Codex CLI does **NOT** support project-level MCP configuration. All MCP server settings are stored globally in `~/.codex/config.toml`.
+
+Unlike Claude Code or VS Code which support workspace-level configuration files, Codex uses a centralized global configuration approach. This means:
+
+- MCP servers configured in `config.toml` are available across all projects
+- Configuration cannot be version-controlled per project
+- Each team member must manually set up their own MCP configuration
+
 ## Important Notes
 
 - This configuration file is **shared** between the CLI and IDE extension

@@ -2,10 +2,16 @@
 
 ## Configuration File Locations
 
-Varies depending on the environment:
+### Global Settings
 
-- **Gemini CLI (Terminal/Command Line)**: `.gemini/settings.json`
+- **All OS**: `~/.gemini/settings.json`
+
+### Project-Level Settings
+
+- **Project Directory**: `.gemini/settings.json` (in project directory)
 - **Firebase Studio Interactive Chat**: `.idx/mcp.json`
+
+Gemini CLI supports project-level MCP configuration. When a `.gemini/settings.json` file exists in the project directory, it takes precedence over the global settings.
 
 ## File Format
 

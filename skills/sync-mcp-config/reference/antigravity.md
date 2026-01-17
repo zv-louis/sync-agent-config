@@ -2,8 +2,16 @@
 
 ## Configuration File Locations
 
+### Global Settings
+
 - **Windows**: `C:\Users\<USER_NAME>\.gemini\antigravity\mcp_config.json`
 - **Other OS**: `~/.gemini/antigravity/mcp_config.json` (estimated)
+
+### Project-Level Settings
+
+Antigravity does **NOT** currently support project-level MCP configuration. All MCP server settings are stored globally at the user level.
+
+Per-workspace MCP configuration is a [requested feature](https://discuss.ai.google.dev/t/support-for-per-workspace-mcp-config-on-antigravity/111952) that may be added in future updates.
 
 ## How to Access Configuration File
 

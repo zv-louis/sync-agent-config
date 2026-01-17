@@ -4,12 +4,21 @@
 
 VS Code uses the **mcp.json** file to configure MCP servers.
 
-- **User Settings**:
-  - **Windows**: `C:\Users\<username>\AppData\Roaming\Code\User\mcp.json`
-  - **macOS**: `/Users/<username>/Library/Application Support/Code/User/mcp.json`
-  - **Linux**: `~/.config/Code/User/mcp.json`
-- **Workspace Settings**: `.vscode/mcp.json` (in project directory)
-- **Remote Settings**: Configuration file for remote connections
+### Global Settings (User-Level)
+
+- **Windows**: `C:\Users\<username>\AppData\Roaming\Code\User\mcp.json`
+- **macOS**: `/Users/<username>/Library/Application Support/Code/User/mcp.json`
+- **Linux**: `~/.config/Code/User/mcp.json`
+
+### Project-Level Settings (Workspace)
+
+- **All OS**: `.vscode/mcp.json` (in project directory)
+
+VS Code supports project-level MCP configuration. When a `.vscode/mcp.json` file exists in the project directory, workspace settings take priority over user settings. This allows teams to share MCP configurations through version control.
+
+### Remote Settings
+
+Configuration file for remote connections (Remote SSH, Containers, WSL, etc.)
 
 ## How to Access Configuration Files
 

@@ -1,123 +1,156 @@
-# sync-mcp-config
+# sync-agent-config
 
 English | [日本語](README_ja.md)
 
-A skill for synchronizing MCP (Model Context Protocol) server settings across different Agent tools.
+A Claude Code plugin for synchronizing Agent configurations (MCP servers, skills) across different Agent tools.
 
 ## Overview
 
-This project provides a skill that enables you to synchronize MCP server configurations between different Agent environments such as Claude Code, VSCode, Claude Desktop, Codex, and Gemini CLI.  
-It reads the MCP configuration from a source Agent tool and applies it to a target Agent tool, ensuring consistent settings across multiple development environments.
+This project provides skills that enable you to synchronize configurations between different Agent environments such as Claude Code, VSCode, Claude Desktop, Codex, Cursor, Gemini CLI, and Antigravity.
+It reads the configuration from a source Agent tool and applies it to a target Agent tool, ensuring consistent settings across multiple development environments.
+
+### Included Skills
+
+- **sync-mcp-config**: Synchronizes MCP server settings
+- **sync-skill-config**: Synchronizes skill configurations
 
 ## Features
 
-- **Cross-Platform Support**:  
+- **Cross-Platform Support**:
   Works on Windows, macOS, and Linux
-- **Multi-Tool Compatibility**:  
+- **Multi-Tool Compatibility**:
   Supports various Agent tools including:
   - Claude Code
   - VSCode
   - Claude Desktop
   - Codex CLI
+  - Cursor
   - Gemini CLI
   - Antigravity
-- **Safe Synchronization**:  
+- **Safe Synchronization**:
   Creates backups and validates configurations before applying changes
-- **Intelligent Handling**:  
- Automatically handles format differences between different Agent tools
-- **Web Search Integration**:  
- Automatically searches for configuration specifications when documentation is not available
+- **Intelligent Handling**:
+  Automatically handles format differences between different Agent tools
+- **Web Search Integration**:
+  Automatically searches for configuration specifications when documentation is not available
 
 ## Installation
 
-1. Download the latest release from the `dist` directory:  
-  
-   ```txt
-   sync-mcp-config-<version>.zip
-   ```
+### Installing to Claude Code
 
-2. Install the skill according to your Agent tool's skill installation procedure.
+You can install the plugin directly from a GitHub repository to Claude Code.
+
+1. Launch Claude Code
+
+2. Run the following command to install the plugin:
+
+Add this marketplace to Claude Code.  
+Run the following command in the Claude Code console.  
+
+```bash
+/plugin marketplace add zv-louis/zv-plugin-marketplace
+```
+
+Then, install the sync-agent-config plugin from the marketplace.  
+
+```bash
+/plugin install sync-agent-config@zv-plugin-marketplace
+```
+
+3. Once installed, the skills will be available for use
 
 ## Usage
 
-Simply tell your Agent to synchronize MCP settings between tools:
+Simply tell your Agent to synchronize settings between tools:
 
-**Examples:**
+**MCP configuration sync examples:**
 
 - "I want to apply Claude Code's MCP settings to Codex"
 - "Sync my MCP configuration from VSCode to Claude Desktop"
 - "Copy MCP server settings from Claude Desktop to Claude Code"
 
-The skill will:  
+**Skill configuration sync examples:**
+
+- "Sync Claude Code's skill settings to Cursor"
+- "Copy skill configuration from VSCode to Gemini CLI"
+
+The skill will:
 
 1. Verify your operating system environment
-2. Read the source Agent tool's MCP configuration
-3. Check available MCP servers
+2. Read the source Agent tool's configuration
+3. Check available settings
 4. Apply the settings to the target Agent tool
 5. Validate the configuration
 
 ## How It Works
 
-1. **OS Environment Check**:  
-  Detects your operating system and sets appropriate paths
-2. **Configuration Verification**:  
-  Reads and understands both source and target configuration formats
-3. **Server Discovery**:  
-  Identifies all MCP servers registered in the source configuration
-4. **Format Conversion**:  
-  Automatically converts settings to match the target tool's format
-5. **Safe Application**:  
-  Backs up existing configurations before making changes
-6. **Validation**:  
-  Ensures the new configuration is valid
+1. **OS Environment Check**:
+   Detects your operating system and sets appropriate paths
+2. **Configuration Verification**:
+   Reads and understands both source and target configuration formats
+3. **Server Discovery**:
+   Identifies all MCP servers registered in the source configuration
+4. **Format Conversion**:
+   Automatically converts settings to match the target tool's format
+5. **Safe Application**:
+   Backs up existing configurations before making changes
+6. **Validation**:
+   Ensures the new configuration is valid
 
 ## Configuration File Locations
 
-The skill automatically detects configuration file paths based on your operating system and Agent tool. Reference documentation for each supported Agent tool is available in the [`sync-mcp-config/reference/`](sync-mcp-config/reference/) directory.
+The skill automatically detects configuration file paths based on your operating system and Agent tool. Reference documentation for each supported Agent tool is available in the `reference/` directory of each skill:
 
-## Development
+- MCP settings: [`skills/sync-mcp-config/reference/`](skills/sync-mcp-config/reference/)
+- Skill settings: [`skills/sync-skill-config/reference/`](skills/sync-skill-config/reference/)
 
-### Project Structure
+## About the Plugin
+
+### File Layout
 
 ```txt
-sync-mcp-config/
-├── SKILL.md              # Skill definition and procedures
-├── VERSION               # Current version number
-└── reference/            # Configuration reference documentation
-    ├── antigravity.md
-    ├── claude_code.md
-    ├── claude_desktop.md
-    ├── codex_cli.md
-    ├── gemini_cli.md
-    └── vscode.md
+sync-agent-config/
+├── .claude-plugin/
+│   └── plugin.json          # Plugin manifest
+├── skills/
+│   ├── sync-mcp-config/     # MCP config sync skill
+│   │   ├── SKILL.md         # Skill definition
+│   │   └── reference/       # Configuration reference documentation
+│   │       ├── antigravity.md
+│   │       ├── claude_code.md
+│   │       ├── claude_desktop.md
+│   │       ├── codex_cli.md
+│   │       ├── cursor.md
+│   │       ├── gemini_cli.md
+│   │       └── vscode.md
+│   └── sync-skill-config/   # Skill config sync skill
+│       ├── SKILL.md         # Skill definition
+│       └── reference/       # Configuration reference documentation
+│           ├── antigravity.md
+│           ├── claude_code.md
+│           ├── codex_cli.md
+│           ├── cursor.md
+│           ├── gemini_cli.md
+│           └── vscode.md
+├── LICENSE
+├── README.md
+└── README_ja.md
 ```
-
-### Building a Release
-
-To create a release archive:
-
-1. The skill archive should include all files and subdirectories within the `sync-mcp-config` directory
-2. Name the archive as `sync-mcp-config-<version>.zip`, where `<version>` matches the version in the [`sync-mcp-config/VERSION`](sync-mcp-config/VERSION) file
-3. Output the zip file to the `dist` directory at the root of this repository
-
-## Version
-
-Current version: 0.5.1
 
 ## Safety Features
 
-- **Backup Creation**:  
+- **Backup Creation**:
   Automatically backs up existing configurations before making changes
-- **Conflict Detection**:  
+- **Conflict Detection**:
   Identifies when servers are already registered and asks for user confirmation
-- **Validation**:  
+- **Validation**:
   Checks configuration file integrity after modifications
-- **Read-Only Mode**:  
+- **Read-Only Mode**:
   Only modifies MCP server settings, leaving other configurations untouched
 
 ## Error Handling
 
-The skill handles various error scenarios:  
+The skill handles various error scenarios:
 
 - Missing source configuration files
 - Write-protected target files
@@ -126,4 +159,5 @@ The skill handles various error scenarios:
 
 ## License
 
-Please refer to the project license file for licensing information.
+Licensed under the MIT License.
+See the `LICENSE` file for details.

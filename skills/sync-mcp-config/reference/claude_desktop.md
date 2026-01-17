@@ -47,6 +47,12 @@ JSON format
     - `args`: Array of command-line arguments
     - `env` (optional): Environment variables
 
+## Project-Level Configuration
+
+Claude Desktop does **NOT** support project-level MCP configuration. All MCP server settings are stored globally at the user level.
+
+If you need project-specific MCP configurations, consider using Claude Code or VS Code which support workspace-level settings.
+
 ## Important Notes
 
 After updating the `claude_desktop_config.json` settings, you must **restart Claude Desktop**.
